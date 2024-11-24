@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Roulette"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Rouletto"
+        android:textAlignment="center"
+        android:textFontWeight="@integer/material_motion_duration_long_1"
+        android:textSize="50dp" />
+
+    <EditText
+        android:id="@+id/edtItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Roulette"
+        android:layout_marginTop="15dp"
+        />
+
+    <com.bluehomestudio.luckywheel.LuckyWheel
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/Roulette"
+        android:layout_centerInParent="true"
+        app:background_color="@android:color/white"/>
+
+    <Button
+        android:id="@+id/btnRoll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtItem"
+        android:layout_toEndOf="@id/btnRemove"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="돌리기"
+        android:textColor="@android:color/white"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/btnAdd"
+        android:layout_below="@id/edtItem"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="10dp"
+        android:text="추가"
+        android:textColor="@android:color/white"
+        android:textSize="25dp"/>
+
+    <Button
+        android:id="@+id/btnRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/btnAdd"
+        android:layout_below="@id/edtItem"
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="10dp"
+        android:text="제거"
+        android:textColor="@android:color/white"
+        android:textSize="25dp"/>
+
+</RelativeLayout>
