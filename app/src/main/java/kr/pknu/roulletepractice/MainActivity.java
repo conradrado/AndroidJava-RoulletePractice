@@ -87,19 +87,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addNewWheelItem(String input) {
-        if(input.isEmpty()){
-            Toast.makeText(MainActivity.this,"Please Add item", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Drawable d = getResources().getDrawable(R.drawable.ic_money, null);
-            Bitmap bitmap = drawableToBitmap(d);
-            WheelItem newItem = new WheelItem(generateRandomColor(), bitmap, input);
-            wheelItems.add(newItem);
+        Drawable d = getResources().getDrawable(R.drawable.ic_money, null);
+        Bitmap bitmap = drawableToBitmap(d);
+        WheelItem newItem = new WheelItem(generateRandomColor(), bitmap, input);
+        wheelItems.add(newItem);
 
-            // 전체 리스트를 다시 설정
-            List<WheelItem> updatedWheelItems = new ArrayList<>(wheelItems);
-            luckyWheel.addWheelItems(updatedWheelItems);
-        }
+        // 전체 리스트를 다시 설정
+        List<WheelItem> updatedWheelItems = new ArrayList<>(wheelItems);
+        luckyWheel.addWheelItems(updatedWheelItems);
     }
 
     private int generateRandomColor(){
