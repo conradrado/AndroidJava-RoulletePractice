@@ -1,7 +1,12 @@
+<!-- res/values/themes.xml -->
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.RoulletePractice" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+    <!-- Light Theme -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
     </style>
+
+    <style name="Base.Theme.RoulletePractice" parent="Theme.AppCompat.NoActionBar"> <!-- Customize your theme here --> </style>
+
+
 </resources>

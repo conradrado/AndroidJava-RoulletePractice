@@ -1,9 +1,11 @@
 package kr.pknu.roulletepractice;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 WheelItem wheelItem = wheelItems.get(Integer.parseInt(point) - 1);
                 String money = wheelItem.text;
                 Toast.makeText(MainActivity.this, money, Toast.LENGTH_SHORT).show();
+                searchOnNaverMaps(money);
             }
         });
 
@@ -74,6 +77,21 @@ public class MainActivity extends AppCompatActivity {
                     luckyWheel.rotateWheelTo(Integer.parseInt(point));
                 } else {
                     Toast.makeText(MainActivity.this, "Add items to the wheel first!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Button remove = findViewById(R.id.btnRemove);
+        remove.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(!wheelItems.isEmpty()){
+                    wheelItems.remove(wheelItems.size()-1);
+                    List<WheelItem> updatedWheelItems = new ArrayList<>(wheelItems);
+                    luckyWheel.addWheelItems(updatedWheelItems);
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "No items in the wheel!",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -112,4 +130,21 @@ public class MainActivity extends AppCompatActivity {
         drawable.draw(canvas);
         return bitmap;
     }
+
+    private void searchOnNaverMaps(String query) {
+        String url = "nmap://search?query=" + Uri.encode(query);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        intent.setPackage("com.nhn.android.nmap");
+
+        // 네이버 지도 앱이 설치되어 있는지 확인
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            // 네이버 지도 앱이 설치되어 있지 않을 경우 Play Store로 이동
+            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.nhn.android.nmap"));
+            startActivity(playStoreIntent);
+        }
+    }
+
+
 }
